@@ -5,7 +5,7 @@ const { generateTokens } = require("../middleware/Auth")
 
 const cookieOption={
     httpOnly:true,
-    sequre:false,
+    sequre:true,
     sameSite:'Lax'
 }
 
