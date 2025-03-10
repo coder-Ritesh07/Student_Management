@@ -101,7 +101,7 @@ function StudentRegister() {
 
   try {
     setloding(true)
-    const res = await axios.post("http://localhost:8000/student/register", formData, {
+    const res = await axios.post("https://student-management-backend-n9ri.onrender.com/student/register", formData, {
       headers: {
         "Content-Type": "multipart/form-data", 
       },
