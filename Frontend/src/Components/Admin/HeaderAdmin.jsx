@@ -8,7 +8,7 @@ function HeaderAdmin(){
   async function handleLogout(){
     localStorage.clear()
     try {
-        let res=await axios.post(`https://student-management-backend-n9ri.onrender.com/student/logout`,{},{withCredentials:true})
+        let res=await axios.post(`http://localhost:8000/student/logout`,{},{withCredentials:true})
         console.log(res.data)
         toast.success("Logout Successfully....")
         setTimeout(() => {

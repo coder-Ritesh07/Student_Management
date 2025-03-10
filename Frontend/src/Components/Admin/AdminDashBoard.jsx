@@ -15,7 +15,7 @@ function AdminDashBoard() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-      axios.get('https://student-management-backend-n9ri.onrender.com/register/admin/getstudent', { withCredentials: true })
+      axios.get('http://localhost:8000/register/admin/getstudent', { withCredentials: true })
           .then((res) => {
               setShowStudents(res.data.allStudent);
           })
@@ -27,7 +27,7 @@ function AdminDashBoard() {
   const handleStudentDelete = async (studentId) => {
       try {
           setLoading(true);
-          let res = await axios.delete(`https://student-management-backend-n9ri.onrender.com/student/studentdelete/${studentId}`, { withCredentials: true });
+          let res = await axios.delete(`http://localhost:8000/student/studentdelete/${studentId}`, { withCredentials: true });
           setLoading(false);
           toast.success(res.data.message);
           // setTimeout(()=>{

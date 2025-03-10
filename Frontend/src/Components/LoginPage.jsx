@@ -23,7 +23,7 @@ function LoginPage() {
         }else{
             try {
                 setloding(true)
-                let res=await axios.post('https://student-management-backend-n9ri.onrender.com/student/login',login,{withCredentials:true})
+                let res=await axios.post('http://localhost:8000/student/login',login,{withCredentials:true})
                 // console.log(res.data.messege,res.data.tokens,res.data.payload.id)
                 setloding(false)
                 localStorage.setItem("tokens",res.data.tokens)

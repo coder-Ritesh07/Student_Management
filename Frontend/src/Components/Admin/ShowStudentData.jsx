@@ -8,7 +8,7 @@ function ShowStudentData() {
   let [showStudent, setShowStudent] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://student-management-backend-n9ri.onrender.com/student/fetchStudent/${studentid}`, {
+      .get(`http://localhost:8000/student/fetchStudent/${studentid}`, {
         withCredentials: true,
       })
       .then((res) => {

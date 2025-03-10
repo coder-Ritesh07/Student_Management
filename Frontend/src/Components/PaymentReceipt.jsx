@@ -12,7 +12,7 @@ function PaymentReceipt() {
 
   useEffect(() => {
     axios
-      .get(`https://student-management-backend-n9ri.onrender.com/student/receipt/${userid}`, {
+      .get(`http://localhost:8000/student/receipt/${userid}`, {
         withCredentials: true,
       })
       .then((res) => {

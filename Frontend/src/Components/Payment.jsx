@@ -38,7 +38,7 @@ function Payment() {
     async function apiCallForPayment(userId) {
       console.log(cashPayment)
       try {
-          let res=await axios.post(`https://student-management-backend-n9ri.onrender.com/student/receipt/${userId}`,cashPayment,{withCredentials:true})
+          let res=await axios.post(`http://localhost:8000/student/receipt/${userId}`,cashPayment,{withCredentials:true})
           console.log(res.data)
           toast.success(res.data.message)
           setTimeout(()=>{
@@ -53,7 +53,7 @@ function Payment() {
 
   useEffect(() => {
     axios
-      .get(`https://student-management-backend-n9ri.onrender.com/student/receipt/${userid}`, {
+      .get(`http://localhost:8000/student/receipt/${userid}`, {
         withCredentials: true,
       })
       .then((res) => {

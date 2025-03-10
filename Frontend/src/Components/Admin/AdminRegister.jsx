@@ -31,7 +31,7 @@ function AddminRegister(){
     
        try {
         setloding(true)
-           let res=await axios.post(`https://student-management-backend-n9ri.onrender.com/register/admin`,admindata,{withCredentials:true})
+           let res=await axios.post(`http://localhost:8000/register/admin`,admindata,{withCredentials:true})
         //    console.log(res.data.messege)
         setloding(false)
            toast.success(res.data.messege)

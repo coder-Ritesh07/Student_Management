@@ -25,7 +25,7 @@ function AdminPage() {
     }else{
       try {
         setloding(true)
-        let res=await axios.post(`https://student-management-backend-n9ri.onrender.com/register/adminlogin`,admin,{withCredentials:true})
+        let res=await axios.post(`http://localhost:8000/register/adminlogin`,admin,{withCredentials:true})
         setloding(false)
         localStorage.setItem("tokens",res.data.tokens)
         localStorage.setItem("adminId",res.data.payload.id)
