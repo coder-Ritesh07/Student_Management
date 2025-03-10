@@ -6,7 +6,7 @@ const { generateTokens } = require("../middleware/Auth")
 const cookieOption={
     httpOnly:true,
     secure: true,
-    sameSite:'Lax'
+    sameSite:'None'
 }
 
 const sendStudent=async(req,res)=>{
