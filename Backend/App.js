@@ -29,16 +29,10 @@ db.on('error',()=>{
 
 let app=express()
 
-const allowedOrigins = ['http://localhost:5173', 'https://student-management-rose-delta.vercel.app'];
+// const allowedOrigins = ['http://localhost:5173'];
 
 app.use(cors({
-    origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin:"https://student-management-rose-delta.vercel.app",
     credentials: true
 }));
 
