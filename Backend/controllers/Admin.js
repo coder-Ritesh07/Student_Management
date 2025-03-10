@@ -5,7 +5,7 @@ const { students } = require("../models/Student")
 
 const cookieOption={
     httpOnly:true,
-    sequre:true,
+    secure: true,
     sameSite:'Lax'
 }
 
