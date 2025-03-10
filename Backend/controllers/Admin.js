@@ -6,7 +6,7 @@ const { students } = require("../models/Student")
 const cookieOption={
     httpOnly:true,
     secure: true,
-    sameSite:'Lax'
+    sameSite:'None'
 }
 
 let registerAdmin=async(req,res)=>{
