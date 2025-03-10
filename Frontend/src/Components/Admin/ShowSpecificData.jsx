@@ -16,7 +16,7 @@ function ShowSpecificData() {
   useEffect(() => {
     setloding(true)
     axios
-      .get(`http://localhost:8000/student/fetchStudent/${studentid}`, { withCredentials: true })
+      .get(`https://student-management-backend-n9ri.onrender.com/student/fetchStudent/${studentid}`, { withCredentials: true })
       .then((res) => {
         console.log(res.data.getStudents);
         setloding(false)
@@ -32,7 +32,7 @@ function ShowSpecificData() {
     try {
       setloding(true);
       let res = await axios.get(
-        `http://localhost:8000/student/receipt/${userId}`,
+        `https://student-management-backend-n9ri.onrender.com/student/receipt/${userId}`,
         { withCredentials: true }
       );
       console.log(res.data.userdata);
@@ -74,7 +74,7 @@ function ShowSpecificData() {
             <div className="">
                 <div className="min-[320px]:self-center">
                 <img
-                  src={`http://localhost:8000/uploads/${response[0].profilepic}`} // Adjust if the image is served from a static route
+                  src={`https://student-management-backend-n9ri.onrender.com/uploads/${response[0].profilepic}`} // Adjust if the image is served from a static route
                   alt="fetchimg"
                   className="md:w-32 md:h-32 min-[320px]:w-24 min-[320px]:h-24  rounded-full shadow-md mb-4 border-2 border-[#141414]"
                 />

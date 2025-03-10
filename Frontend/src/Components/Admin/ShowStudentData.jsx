@@ -8,7 +8,7 @@ function ShowStudentData() {
   let [showStudent, setShowStudent] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/student/fetchStudent/${studentid}`, {
+      .get(`https://student-management-backend-n9ri.onrender.com/student/fetchStudent/${studentid}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -34,7 +34,7 @@ function ShowStudentData() {
             showStudent.map((student) => (
               <div key={student._id}>
                 <img
-                  src={`http://localhost:8000/uploads/${student.profilepic}`} // Adjust if the image is served from a static route
+                  src={`https://student-management-backend-n9ri.onrender.com/uploads/${student.profilepic}`} // Adjust if the image is served from a static route
                   alt="fetchimg"
                   className="w-32 h-32 rounded-full shadow-md mb-4 border-2 border-[#E9762B]"
                 />

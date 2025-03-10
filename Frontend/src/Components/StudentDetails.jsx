@@ -19,7 +19,7 @@ function StudentDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/student/fetchStudent/${userid}`, {
+      .get(`https://student-management-backend-n9ri.onrender.com/student/fetchStudent/${userid}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -31,7 +31,7 @@ function StudentDetails() {
     try {
       setloding(true);
       let res = await axios.get(
-        `http://localhost:8000/student/receipt/${userId}`,
+        `https://student-management-backend-n9ri.onrender.com/student/receipt/${userId}`,
         { withCredentials: true }
       );
       console.log(res.data.userdata);
@@ -65,7 +65,7 @@ function StudentDetails() {
             return (
               <div key={idx}>
                 <img
-                  src={`http://localhost:8000/uploads/${student.profilepic}`}
+                  src={`https://student-management-backend-n9ri.onrender.com/uploads/${student.profilepic}`}
                   alt="profileimg"
                   className="md:w-40 md:h-40 min-[320px]:w-20 min-[320px]:h-20  min-[320px]:self-center rounded-full"
                 />
