@@ -46,7 +46,7 @@ function PaymentReceipt() {
     pdf.text(`PAYMENT ID - ${paymentReceipt?._id}`, centerX(`PAYMENT ID - ${paymentReceipt?._id}`), 80);
     pdf.text(`PAY AMOUNT - ${paymentReceipt?.payamount}Rs`, centerX(`PAY AMOUNT - ${paymentReceipt?.payamount}`), 90);
     pdf.text(`REST OF AMOUNT - ${paymentReceipt?.restofamount}Rs`, centerX(`REST OF AMOUNT - ${paymentReceipt?.restofamount}`), 100);
-    pdf.text(`PAYMENT DATE - ${paymentReceipt?.createdAt?.slice(0, 10)}`, centerX(`PAYMENT DATE - ${paymentReceipt?.createdAt?.slice(0, 10)}`), 110);
+    pdf.text(`PAYMENT DATE - ${paymentReceipt?.updatedAt?.slice(0, 10)}`, centerX(`PAYMENT DATE - ${paymentReceipt?.updatedAt?.slice(0, 10)}`), 110);
     pdf.text("------------------------------------------------------------", centerX("---------------------------------------------------------------------"), 120);
     pdf.text("THANK YOU...", centerX("THANK YOU..."), 130);
   
@@ -103,7 +103,7 @@ function PaymentReceipt() {
               <p className="md:text-[18px] min-[320px]:text-[16px] text-[#000] font-bold">
               PAYMENT DATE-
                 <span className=" text-[#202020]">
-                  {paymentReceipt?.createdAt?.slice(0, 10)?paymentReceipt?.createdAt?.slice(0, 10):"Loading..."}
+                  {paymentReceipt?.updatedAt?.slice(0, 10)?paymentReceipt?.updatedAt?.slice(0, 10):"Loading..."}
                 </span>
               </p>
             </div>
