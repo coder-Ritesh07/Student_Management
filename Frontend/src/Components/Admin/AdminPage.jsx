@@ -51,7 +51,7 @@ function AdminPage() {
         <div className=" max-w-[90%] mx-auto my-3 flex justify-center">
           <div className="flex-col">
             {/* Admin box section */}
-            <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col-reverse items-center">
+            <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col-reverse min-[320px]:justify-center min-[320px]:items-center items-center">
               <div className="flex-col ">
                 <div ><input
                   type="text"
@@ -78,7 +78,7 @@ function AdminPage() {
                 <img
                   src="/img/Admin.png"
                   alt="Adminimg"
-                  className="md:w-[500px] md:h-[420px] min-[320px]:w-80 min-[320px]:h-64"
+                  className="md:w-[500px] md:h-[420px] min-[320px]:w-80 min-[320px]:h-80"
                 />
               </div>
             </div>
