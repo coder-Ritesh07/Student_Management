@@ -15,12 +15,16 @@ function AdminDashBoard() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
       axios.get('https://student-management-backend-n9ri.onrender.com/register/admin/getstudent', { withCredentials: true })
           .then((res) => {
+            setLoading(false)
               setShowStudents(res.data.allStudent);
           })
           .catch((err) => {
               console.log(err);
+              setLoading(false)
+              toast.error("Data Not Found")
           });
   }, []);
 
