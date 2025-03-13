@@ -12,7 +12,8 @@ function StudentRegister() {
   let navigate=useNavigate()
   let[response,SetResponse]=useState([])
   let [register, setRegister] = useState({
-    name: "",
+    firstname: "",
+    lastname:"",
     fathername: "",
     mothername: "",
     studentclass: "",
@@ -20,8 +21,9 @@ function StudentRegister() {
     address: "",
     gmail: "",
     contactnumber: "",
-    alternativcontactnumber: "",
-    addharnumber: "",
+    alternativecontactnumber: "",
+    addharnumberofstudent: "",
+    addharnumberofparents:"",
     gender: "",
     cast: "",
     DOB: "",
@@ -80,7 +82,7 @@ function StudentRegister() {
   }
 
   async function handlSubmitData(e) {
-    if(register.name===""|| register.fathername===""||register.mothername===""||register.studentclass===""||register.section===""||register.address===""||register.gmail===""||register.contactnumber===""||register.alternativcontactnumber===""||register.addharnumber===""||register.gender===""||register.cast===""||register.DOB===""||register.profilepic===""||register.username===""||register.password==="")
+    if(register.firstname===""||register.lastname===""|| register.fathername===""||register.mothername===""||register.studentclass===""||register.section===""||register.address===""||register.gmail===""||register.contactnumber===""||register.alternativecontactnumber===""||register.addharnumberofstudent===""||register.addharnumberofparents===""||register.gender===""||register.cast===""||register.DOB===""||register.profilepic===""||register.username===""||register.password==="")
     {
       toast.error("Fill Up the Form Properly")
       return;
@@ -158,12 +160,23 @@ function StudentRegister() {
                 <div className="mb-3">
                   <input
                     type="text"
-                    placeholder="Name"
+                    placeholder="First Name"
                     required
-                    name="name"
+                    name="firstname"
                     className="focus:outline-none lg:w-80 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80  text-xl font-semibold pl-2 rounded-md"
-                    value={register.name}
-                    onChange={(e) => handleRegister(e, "name")}
+                    value={register.firstname}
+                    onChange={(e) => handleRegister(e, "firstname")}
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    required
+                    name="lastname"
+                    className="focus:outline-none lg:w-80 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80  text-xl font-semibold pl-2 rounded-md"
+                    value={register.lastname}
+                    onChange={(e) => handleRegister(e, "lastname")}
                   />
                 </div>
                 <div className="mb-3">
@@ -177,6 +190,8 @@ function StudentRegister() {
                     onChange={(e) => handleRegister(e, "fathername")}
                   />
                 </div>
+              </div>
+              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <input
                     type="text"
@@ -188,8 +203,6 @@ function StudentRegister() {
                     onChange={(e) => handleRegister(e, "mothername")}
                   />
                 </div>
-              </div>
-              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <input
                     type="number"
@@ -212,6 +225,8 @@ function StudentRegister() {
                     onChange={(e) => handleRegister(e, "section")}
                   />
                 </div>
+              </div>
+              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <input
                     type="text"
@@ -223,8 +238,6 @@ function StudentRegister() {
                     onChange={(e) => handleRegister(e, "address")}
                   />
                 </div>
-              </div>
-              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <input
                     type="text"
@@ -247,32 +260,45 @@ function StudentRegister() {
                     onChange={(e) => handleRegister(e, "contactnumber")}
                   />
                 </div>
-                <div className="mb-3">
-                  <input
-                    type="number"
-                    placeholder="Alternative Number"
-                    required
-                    name="alternativcontactnumber"
-                    className="focus:outline-none lg:w-80 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80  text-xl font-semibold pl-2 rounded-md"
-                    value={register.alternativcontactnumber}
-                    onChange={(e) =>
-                      handleRegister(e, "alternativcontactnumber")
-                    }
-                  />
-                </div>
               </div>
               <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <input
                     type="number"
-                    placeholder="Addhar Number"
+                    placeholder="Alternative Number"
                     required
-                    name="addharnumber"
+                    name="alternativecontactnumber"
                     className="focus:outline-none lg:w-80 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80  text-xl font-semibold pl-2 rounded-md"
-                    value={register.addharnumber}
-                    onChange={(e) => handleRegister(e, "addharnumber")}
+                    value={register.alternativecontactnumber}
+                    onChange={(e) =>
+                      handleRegister(e, "alternativecontactnumber")
+                    }
                   />
                 </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    placeholder="Student Addhar"
+                    required
+                    name="addharnumberofstudent"
+                    className="focus:outline-none lg:w-80 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80  text-xl font-semibold pl-2 rounded-md"
+                    value={register.addharnumberofstudent}
+                    onChange={(e) => handleRegister(e, "addharnumberofstudent")}
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    placeholder="Parents Addhar"
+                    required
+                    name="addharnumberofparents"
+                    className="focus:outline-none lg:w-80 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80  text-xl font-semibold pl-2 rounded-md"
+                    value={register.addharnumberofparents}
+                    onChange={(e) => handleRegister(e, "addharnumberofparents")}
+                  />
+                </div>
+              </div>
+              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <select
                     name="gender"
@@ -316,20 +342,20 @@ function StudentRegister() {
                     </option>
                   </select>
                 </div>
-              </div>
-              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
-                <div className="mb-3">
+                <div className="mb-3 md:flex md:items-center">
                   <p  className="text-xl font-semibold mr-2">
                     D.O.B-
                   </p>
                   <input
                     type="date"
-                    className="focus:outline-none rounded text-xl font-semibold lg:w-60 md:w-56 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80 "
+                    className="focus:outline-none rounded text-xl font-semibold lg:w-60 md:w-48 md:h-9 min-[320px]:w-56 min-[320px]:h-8 min-[375px]:w-64 min-[375px]:h-8 min-[425px]:w-80 "
                     name="DOB"
                     onChange={(e) => handleForDate(e, "DOB")}
                   />
                 </div>
-                <div className="mb-3">
+              </div>
+              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
+                <div className="mb-3 ">
                   <p  className="md:text-xl min-[320px]:text-[18px] font-semibold md:mr-2">
                     Choose Profile-
                   </p>
@@ -342,8 +368,6 @@ function StudentRegister() {
                   />
                   <span className="text-red-600 min-[320px]:text-[16px] min-[320px]:block min-[320px]:w-56 ">(* Only JPEG, PNG, and JPG are allowed.)</span>
                 </div>
-              </div>
-              <div className="md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col  justify-center items-center gap-x-5">
                 <div className="mb-3">
                   <input
                     type="text"

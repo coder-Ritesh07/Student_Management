@@ -8,7 +8,7 @@ let receipt = async (req, res) => {
       .findOne({ student: userId })
       .populate(
         "student",
-        "name fathername studentclass studentclass section contactnumber profilepic annualamount"
+        "Stid firstname lastname fathername studentclass studentclass section contactnumber profilepic annualamount"
       );
     res.status(200).json({ messege: "Data Fetch Successfully", userdata });
   } catch (error) {

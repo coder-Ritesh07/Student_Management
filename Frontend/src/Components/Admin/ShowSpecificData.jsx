@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { TbLoader3 } from "react-icons/tb";
+import { IoReceipt } from "react-icons/io5";
 
 function ShowSpecificData() {
   let navigate=useNavigate()
@@ -80,7 +81,10 @@ function ShowSpecificData() {
                 />
                 </div>
             <p className="md:text-2xl min-[320px]:text-xl text-[#2e2e2e] font-bold">
-                NAME-<span className="text-black">{response[0].name}</span>
+               FIRST NAME-<span className="text-black">{response[0].firstname}</span>
+              </p>
+            <p className="md:text-2xl min-[320px]:text-xl text-[#2e2e2e] font-bold">
+               LAST NAME-<span className="text-black">{response[0].lastname}</span>
               </p>
               <p className="md:text-2xl min-[320px]:text-xl text-[#2e2e2e] font-bold">
                 FATHER NAME-<span className="text-black">{response[0].fathername}</span>
@@ -146,9 +150,9 @@ function ShowSpecificData() {
                   ) : (
                     <div className="text-black md:text-xl min-[320px]:text-[16px] font-bold mt-4">
                       <p className="mb-3">
-                        Student Id-
+                        Student Roll No.-
                         <span className="bg-orange-500 rounded p-1 text-white">
-                          {receipt.student._id}
+                          {receipt.student.Stid}
                         </span>
                       </p>
                       <p className="mb-3">
@@ -170,6 +174,9 @@ function ShowSpecificData() {
                         </span>
                       </p>
                       <p>Last Pay Date-<span className="bg-orange-500 rounded p-1 text-white">{receipt.createdAt.slice(0,10)}</span></p>
+                      <Link to={`/student/paymentreceipt/${receipt?.student?._id}`}>
+                      <IoReceipt className="md:text-4xl ml-5 mt-3 min-[320px]:text-2xl text-green-400 cursor-pointer transition-transform duration-200 hover:scale-125" />
+                      </Link>
                     </div>
                   )}
                 </div>

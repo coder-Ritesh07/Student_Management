@@ -32,7 +32,7 @@ let app=express()
 // const allowedOrigins = ['http://localhost:5173'];
 
 app.use(cors({
-    origin:"https://student-management-rose-delta.vercel.app",
+    origin:"http://localhost:5173",
     credentials: true
 }));
 

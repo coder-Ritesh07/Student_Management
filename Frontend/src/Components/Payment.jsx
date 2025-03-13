@@ -97,9 +97,9 @@ function Payment() {
             </div>):
             (<div>
               <p className="mb-3 md:text-xl min-[320px]:text-[16px] font-bold">
-                Student Id-
+                Student Roll No.-
                 <span className="bg-orange-500 rounded p-1  text-white">
-                  {payment?.student?._id?payment?.student?._id:"Loading....."}
+                  {payment?.student?.Stid?payment?.student?.Stid:"Loading....."}
                 </span>
               </p>
               <p className="mb-3 md:text-xl min-[320px]:text-[16px] font-bold">

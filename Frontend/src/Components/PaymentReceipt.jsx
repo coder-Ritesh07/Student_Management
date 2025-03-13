@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 // import axios from "axios";
 import {jsPDF} from "jspdf"
 import HeaderAdmin from "./Admin/HeaderAdmin";
+import { Link } from "react-router-dom";
 
 function PaymentReceipt() {
   let { userid } = useParams();
@@ -37,18 +38,19 @@ function PaymentReceipt() {
   
     // Add horizontally centered content
     pdf.text("RECEIPT", centerX("RECEIPT"), 10); // Y position is fixed at 10
-    pdf.text(`STUDENT ID - ${paymentReceipt?.student?._id}`, centerX(`STUDENT ID - ${paymentReceipt?.student?._id}`), 20);
-    pdf.text(`NAME - ${paymentReceipt?.student?.name}`, centerX(`NAME - ${paymentReceipt?.student?.name}`), 30);
-    pdf.text(`FATHER NAME - ${paymentReceipt?.student?.fathername}`, centerX(`FATHER NAME - ${paymentReceipt?.student?.fathername}`), 40);
-    pdf.text(`CONTACT NUMBER - ${paymentReceipt?.student?.contactnumber}`, centerX(`CONTACT NUMBER - ${paymentReceipt?.student?.contactnumber}`), 50);
-    pdf.text(`CLASS - ${paymentReceipt?.student?.studentclass}`, centerX(`CLASS - ${paymentReceipt?.student?.studentclass}`), 60);
-    pdf.text(`SECTION - ${paymentReceipt?.student?.section}`, centerX(`SECTION - ${paymentReceipt?.student?.section}`), 70);
-    pdf.text(`PAYMENT ID - ${paymentReceipt?._id}`, centerX(`PAYMENT ID - ${paymentReceipt?._id}`), 80);
-    pdf.text(`PAY AMOUNT - ${paymentReceipt?.payamount}Rs`, centerX(`PAY AMOUNT - ${paymentReceipt?.payamount}`), 90);
-    pdf.text(`REST OF AMOUNT - ${paymentReceipt?.restofamount}Rs`, centerX(`REST OF AMOUNT - ${paymentReceipt?.restofamount}`), 100);
-    pdf.text(`PAYMENT DATE - ${paymentReceipt?.updatedAt?.slice(0, 10)}`, centerX(`PAYMENT DATE - ${paymentReceipt?.updatedAt?.slice(0, 10)}`), 110);
-    pdf.text("------------------------------------------------------------", centerX("---------------------------------------------------------------------"), 120);
-    pdf.text("THANK YOU...", centerX("THANK YOU..."), 130);
+    pdf.text(`STUDENT ROLL NUMBER. - ${paymentReceipt?.student?.Stid}`, centerX(`STUDENT ID - ${paymentReceipt?.student?.Stid}`), 20);
+    pdf.text(`FIRST NAME - ${paymentReceipt?.student?.firstname}`, centerX(`NAME - ${paymentReceipt?.student?.firstname}`), 30);
+    pdf.text(`LAST NAME - ${paymentReceipt?.student?.lastname}`, centerX(`NAME - ${paymentReceipt?.student?.lastname}`), 40);
+    pdf.text(`FATHER NAME - ${paymentReceipt?.student?.fathername}`, centerX(`FATHER NAME - ${paymentReceipt?.student?.fathername}`), 50);
+    pdf.text(`CONTACT NUMBER - ${paymentReceipt?.student?.contactnumber}`, centerX(`CONTACT NUMBER - ${paymentReceipt?.student?.contactnumber}`), 60);
+    pdf.text(`CLASS - ${paymentReceipt?.student?.studentclass}`, centerX(`CLASS - ${paymentReceipt?.student?.studentclass}`), 70);
+    pdf.text(`SECTION - ${paymentReceipt?.student?.section}`, centerX(`SECTION - ${paymentReceipt?.student?.section}`), 80);
+    pdf.text(`PAYMENT ID - ${paymentReceipt?._id}`, centerX(`PAYMENT ID - ${paymentReceipt?._id}`), 90);
+    pdf.text(`PAY AMOUNT - ${paymentReceipt?.payamount}Rs`, centerX(`PAY AMOUNT - ${paymentReceipt?.payamount}`), 100);
+    pdf.text(`REST OF AMOUNT - ${paymentReceipt?.restofamount}Rs`, centerX(`REST OF AMOUNT - ${paymentReceipt?.restofamount}`), 110);
+    pdf.text(`PAYMENT DATE - ${paymentReceipt?.updatedAt?.slice(0, 10)}`, centerX(`PAYMENT DATE - ${paymentReceipt?.updatedAt?.slice(0, 10)}`), 120);
+    pdf.text("------------------------------------------------------------", centerX("---------------------------------------------------------------------"), 130);
+    pdf.text("THANK YOU...", centerX("THANK YOU..."), 140);
   
     // Save the PDF
     pdf.save("receipt.pdf");
@@ -59,16 +61,25 @@ function PaymentReceipt() {
       <div>
         <HeaderAdmin/>
         <div className="bg-[#f1c6aae4] min-h-screen p-3">
+        <Link to="/admin/dashboard">
+        <button className="md:text-2xl min-[320px]:text-xl ml-4 font-semibold bg-[#E9762B] text-white rounded-md mt-3 hover:scale-105 transition md:px-3 md:py-1 min-[320px]:px-2 min-[320px]:py-1">
+          Dashboard
+        </button>
+        </Link>
           <h1 className="text-center font-bold md:text-2xl min-[320px]:text-xl ">PAYMENT RECEIPT </h1>
           <div className="max-w-[90%] my-0 mx-auto  md:flex md:flex-row min-[320px]:flex min-[320px]:flex-col-reverse justify-center items-center">
             <div className="bg-white rounded-md p-3">
               <p className="md:text-[18px] min-[320px]:text-[16px] text-[#000] font-bold">
-              STUDENT ID-
-                <span className=" text-[#202020]">{paymentReceipt?.student?._id?paymentReceipt?.student?._id:"Loading..."}</span>
+              STUDENT ROLL NO.-
+                <span className=" text-[#202020]">{paymentReceipt?.student?.Stid?paymentReceipt?.student?.Stid:"Loading..."}</span>
               </p>
               <p className="md:text-[18px] min-[320px]:text-[16px] text-[#000] font-bold">
-              NAME-
-                <span className=" text-[#202020]">{paymentReceipt?.student?.name?paymentReceipt?.student?.name:"Loading...."}</span>
+              FIRST NAME-
+                <span className=" text-[#202020]">{paymentReceipt?.student?.firstname?paymentReceipt?.student?.firstname:"Loading...."}</span>
+              </p>
+              <p className="md:text-[18px] min-[320px]:text-[16px] text-[#000] font-bold">
+              LAST NAME-
+                <span className=" text-[#202020]">{paymentReceipt?.student?.lastname?paymentReceipt?.student?.lastname:"Loading...."}</span>
               </p>
               <p className="md:text-[18px] min-[320px]:text-[16px] text-[#000] font-bold">
               FATHER NAME-

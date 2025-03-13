@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import {toast,ToastContainer} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import { TbLoader3 } from "react-icons/tb";
+import { IoWallet } from "react-icons/io5";
 
 function AdminDashBoard() {
   let [showStudent, setShowStudents] = useState([]);
@@ -18,6 +19,7 @@ function AdminDashBoard() {
     setLoading(true)
       axios.get('https://student-management-backend-n9ri.onrender.com/register/admin/getstudent', { withCredentials: true })
           .then((res) => {
+            console.log(res.data)
             setLoading(false)
               setShowStudents(res.data.allStudent);
           })
@@ -31,13 +33,14 @@ function AdminDashBoard() {
   const handleStudentDelete = async (studentId) => {
       try {
           setLoading(true);
+          console.log(studentId)
           let res = await axios.delete(`https://student-management-backend-n9ri.onrender.com/student/studentdelete/${studentId}`, { withCredentials: true });
           setLoading(false);
           toast.success(res.data.message);
           // setTimeout(()=>{
           //   location.reload()
           // },1000)
-          setShowStudents(showStudent.filter(student => student._id !== studentId));
+          setShowStudents(showStudent.filter(student => student.Stid !== studentId));
       } catch (error) {
           console.log(error);
           setLoading(false);
@@ -48,8 +51,9 @@ function AdminDashBoard() {
   // Filter logic based on search input
   const filteredStudents = search
       ? showStudent.filter(student =>
-          student.name.toLowerCase().includes(search.toLowerCase()) ||
-          student._id.toLowerCase().includes(search.toLowerCase())
+          student.firstname.toLowerCase().includes(search.toLowerCase()) ||
+          student.lastname.toLowerCase().includes(search.toLowerCase()) ||
+          student.Stid.toLowerCase().includes(search.toLowerCase())
       )
       : showStudent;
 
@@ -80,20 +84,24 @@ function AdminDashBoard() {
                           <Link to={`/admin/dashboard/${student._id}`}>
                               <div className="flex flex-col hover:underline decoration-slate-100">
                                   <h1 className="md:text-2xl min-[320px]:text-[16px] text-white font-semibold">
-                                      NAME - <span className="text-orange-400">{student.name}</span>
+                                    <span className="text-orange-400 mr-2">{student.firstname}</span>
+                                    <span className="text-orange-400">{student.lastname}</span>
                                   </h1>
                                   <h1 className="text-lg min-[320px]:text-[16px] text-gray-300 font-medium">
-                                      ID - <span className="text-orange-300">{student._id}</span>
+                                      ID - <span className="text-orange-300">{student.Stid}</span>
                                   </h1>
                               </div>
                           </Link>
                           {loading && <TbLoader3 className="text-[#000000] text-5xl animate-spin absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />}
-                          <div className="flex items-center justify-between md:w-20 min-[320px]:w-14">
+                          <div className="flex items-center justify-between md:w-36 min-[320px]:w-24">
+                            <Link to={`/student/payment/${student._id}`}>
+                              <IoWallet  className="md:text-4xl min-[320px]:text-2xl text-green-300 cursor-pointer transition-transform duration-200 hover:scale-125" />
+                            </Link>
                               <MdModeEdit className="md:text-4xl min-[320px]:text-2xl text-orange-300 cursor-pointer transition-transform duration-200 hover:scale-125" />
                               <MdDeleteForever
                                   onClick={(e) => {
                                       e.stopPropagation();
-                                      handleStudentDelete(student._id);
+                                      handleStudentDelete(student.Stid);
                                   }}
                                   className="md:text-4xl min-[320px]:text-2xl text-red-500 cursor-pointer transition-transform duration-200 hover:scale-125"
                               />
